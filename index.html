@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ToDoList</title>
+
+    <!--  -->
+    <style>
+        .container {
+            padding: 20px;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 40px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        #button {
+            display: inline-block;
+            background-color: black;
+            color: red;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 2px;
+            padding: 5px 15px;
+        }
+
+        #button:hover {
+            cursor: pointer;
+            opacity: .8;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2> To Do List</h2>
+        <form name="toDoList">
+            <input type="text" name="ListItem" />
+        </form>
+
+        <div id="button">Add</div>
+        <br/>
+        <ol></ol>
+
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#button').click(
+                function() {
+                    var toAdd = $('input[name=ListItem]').val();
+                    $('ol').append('<li>' + toAdd + '</li>');
+                });
+            $("input[name=ListItem]").keyup(function(event) {
+                if (event.keyCode == 13) {
+                    $("#button").click();
+                }
+            });
+
+
+
+        });
+
+    </script>
+
+</body>
+
+</html>
