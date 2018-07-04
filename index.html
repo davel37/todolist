@@ -19,21 +19,11 @@
             border-radius: 5px;
         }
 
-        #button {
-            display: inline-block;
-            background-color: black;
-            color: red;
-            border-radius: 5px;
-            text-align: center;
-            margin-top: 2px;
-            padding: 5px 15px;
-        }
 
         #button:hover {
             cursor: pointer;
             opacity: .8;
         }
-
     </style>
 
 </head>
@@ -41,11 +31,12 @@
 <body>
     <div class="container">
         <h2> To Do List</h2>
-        <form name="toDoList">
-            <input type="text" name="ListItem" />
-        </form>
 
-        <div id="button">Add</div>
+        <input type="text" name="ListItem" />
+
+
+        <button type="button" id="button" class="btn btn-secondary">Add</button>
+        <button type="button" id="saveButton" class="btn btn-primary">Save</button>
         <br/>
         <ol></ol>
 
@@ -55,7 +46,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
+         $(document).ready(function() {
             $('#button').click(
                 function() {
                     var toAdd = $('input[name=ListItem]').val();
@@ -65,12 +56,14 @@
                 if (event.keyCode == 13) {
                     $("#button").click();
                 }
+                $('#savebutton').click(
+                function() {
+                    var list = [];
+                 list.push(toAdd);
+                    alert(list);
             });
-
-
-
         });
-
+ });
     </script>
 
 </body>
