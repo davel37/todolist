@@ -19,7 +19,6 @@
             border-radius: 5px;
         }
 
-
         #button:hover {
             cursor: pointer;
             opacity: .8;
@@ -41,29 +40,54 @@
         <ol></ol>
 
 
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
-         $(document).ready(function() {
+        $(document).ready(function() {
+            var list = [];
+
+            var addToList = function(value) {
+                list.push(value);
+
+            };
+
+            function removeItem(item) {
+
+                $(item).parent().fadeOut('slow', function() {
+                    $(item).parent().remove();
+
+                    const idx = list.indexOf(item);
+
+                    list.splice(idx, 1);
+                    alert(list);
+
+                });
+            }
+
             $('#button').click(
                 function() {
                     var toAdd = $('input[name=ListItem]').val();
-                    $('ol').append('<li>' + toAdd + '</li>');
+                    addToList(toAdd);
+                    $('ol').append('<li>' + toAdd + ' <button class="btn">X</button></li>');
                 });
+
             $("input[name=ListItem]").keyup(function(event) {
                 if (event.keyCode == 13) {
                     $("#button").click();
                 }
-                $('#savebutton').click(
+            });
+
+            $('#saveButton').click(
                 function() {
-                    var list = [];
-                 list.push(toAdd);
                     alert(list);
+                });
+
+            $('ol').on('click', '.btn', function() {
+                var item = this;
+                removeItem(item);
             });
         });
- });
     </script>
 
 </body>
